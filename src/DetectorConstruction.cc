@@ -146,10 +146,10 @@ void DetectorConstruction::ConstructField ()
       G4ThreeVector fieldVector (B_field_intensity, 0., 0.) ;   // debug of magnetic field
 
       B_field = new G4UniformMagField (fieldVector) ; 
-
-      globalFieldMgr->CreateChordFinder (B_field) ;      
-     // fieldMgr->GetChordFinder ()->SetDeltaChord (G4double newValue) ;
       globalFieldMgr->SetDetectorField (B_field) ;
+      globalFieldMgr->CreateChordFinder (B_field) ;
+      globalFieldMgr->GetChordFinder ()->SetDeltaChord (0.005 * mm) ;
+
       B_field_IsInitialized = true ;
     }
   G4cout << ">>>>>> DetectorConstruction::ConstructField ()::end <<< " << G4endl ;
